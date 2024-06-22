@@ -1,0 +1,31 @@
+.related-articles__wrapper{
+  display: flex;
+  flex-wrap:wrap;
+  align-items: center;
+  margin: 0 auto;
+  gap: 10px;
+}
+
+.related-articles__header{
+  margin-bottom: 20px;
+}
+
+.related-articles{
+  margin-top: 20px;
+}
+
+.related-articles__container{
+  max-width: 15rem;
+
+}
+
+
+@media screen and (min-width : 768px){
+  .related-article__wrapper{
+    max-width: 70%;
+  }
+  .related-articles__container{
+    max-width: 30rem
+  }
+}
+

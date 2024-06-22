@@ -1,0 +1,62 @@
+
+<link rel="stylesheet" href="{{'related-blogs.css' |  asset_url}}">
+        
+{% comment %} Storing the current article's tags {% endcomment %}
+{% assign related_tags = article.tags %}
+{% assign related_blogs = '' %}
+
+{% assign count = 0 %}
+{% for current_article in blog.articles %}      
+  {% assign related = false %}
+  {% comment %}Looping through the article's tags and checking if the related_tags has the specific tag {% endcomment %}
+  {% for tag in current_article.tags %}
+    {% if related_tags contains tag %}
+      {% assign related = true %}
+      {%  break  %} 
+    {% endif %}
+  {% endfor %}
+
+  {% if current_article.handle != article.handle and related == true and count < 3 %}
+    {%  assign related_blogs = related_blogs |  append: current_article.handle |  append: ', ' %}  
+    {% assign count = count | plus: 1 %}
+  {% endif %}
+{% endfor %}
+
+{% assign related_article_array = related_blogs |  split : ', ' |  uniq %}
+
+{% if related_article_array.size > 0 %}
+  <marmeto-related-blogs>
+    <div class="related-articles page-width">
+      <h5 class=" related-articles__header">
+        <strong>{{ block.settings.heading }}</strong>
+      </h5>
+    
+        <div class="related-articles__wrapper">
+          {% for related_article_handle in related_article_array %}
+            {% assign related_article = articles[related_article_handle] %}
+            <div class="related-articles__container">
+              {{  }}
+              <a href="{{ related_article.url }}" class="related-article__image">
+                {%  render 'responsive-picture', mobileImage : related_article.image, desktopImage : related_article.image %} 
+              </a>
+              <div class="related-article__info">
+                <div class="related-article__name">
+                  {% if related_article.title.size > 40 %}
+                  {{ related_article.title |  truncatewords: 6 }}
+                  {%  else  %}
+                    {{ related_article.title }}
+                  {% endif %}
+                </div>
+              <div class="related-article__created-at-read-more">
+                <div class="related-article__created-at">{{ related_article.created_at  | date: '%B %d, %Y' }}</div>
+                <a href="{{ related_article.url }}">
+                  <strong>Read more...</strong>
+                </a>
+              </div>
+            </div>
+          </div>
+      {% endfor %} 
+      </div>
+    </div>
+  </marmeto-related-blogs>
+{% endif %}
