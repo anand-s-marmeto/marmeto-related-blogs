@@ -26,15 +26,15 @@
 
 {% if related_article_array.size > 0 %}
   <marmeto-related-blogs>
-    <div class="related-articles page-width">
+    <div class="marmeto-related-blogs page-width">
       <h5 class=" related-articles__header">
         <strong>{{ block.settings.heading }}</strong>
       </h5>
     
-        <div class="related-articles__wrapper">
+        <div class="marmeto-related-blogs__wrapper">
           {% for related_article_handle in related_article_array %}
             {% assign related_article = articles[related_article_handle] %}
-            <div class="related-articles__container">
+            <div class="marmeto-related-blogs__container">
               {{  }}
               <a href="{{ related_article.url }}" class="related-article__image">
                 {%  render 'responsive-picture', mobileImage : related_article.image, desktopImage : related_article.image %} 

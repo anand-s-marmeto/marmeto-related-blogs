@@ -1,4 +1,4 @@
-.related-articles__wrapper{
+.marmeto-related-blogs__wrapper{
   display: flex;
   flex-wrap:wrap;
   align-items: center;
@@ -6,15 +6,15 @@
   gap: 10px;
 }
 
-.related-articles__header{
+.marmeto-related-blogs__header{
   margin-bottom: 20px;
 }
 
-.related-articles{
+.marmeto-related-blogs{
   margin-top: 20px;
 }
 
-.related-articles__container{
+.marmeto-related-blogs__container{
   max-width: 15rem;
 
 }
@@ -24,7 +24,7 @@
   .related-article__wrapper{
     max-width: 70%;
   }
-  .related-articles__container{
+  .marmeto-related-blogs__container{
     max-width: 30rem
   }
 }
